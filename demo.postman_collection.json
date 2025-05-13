@@ -80,6 +80,41 @@
 				"url": "https://dummyjson.com/auth/login"
 			},
 			"response": []
+		},
+		{
+			"name": "Get profile",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});"
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": {
+						"token": "{{DEMO_LOGIN_TOKEN}}"
+					}
+				},
+				"method": "GET",
+				"header": [],
+				"url": "https://dummyjson.com/auth/me"
+			},
+			"response": []
+		}
+	],
+	"variable": [
+		{
+			"key": "DEMO_LOGIN_TOKEN",
+			"value": ""
 		}
 	]
 }
