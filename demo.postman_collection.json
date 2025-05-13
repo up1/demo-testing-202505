@@ -1,10 +1,10 @@
 {
 	"info": {
-		"_postman_id": "a675d64c-ce90-4727-850c-12d5ed06fa8f",
+		"_postman_id": "20a8a33b-9db7-4605-8387-ad0e33e8a966",
 		"name": "Demo",
 		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json",
 		"_exporter_id": "1453931",
-		"_collection_link": "https://red-firefly-245852.postman.co/workspace/scb-testing~bf0a9e3a-59e9-48d1-bfab-0952267c341a/collection/1453931-a675d64c-ce90-4727-850c-12d5ed06fa8f?action=share&source=collection_link&creator=1453931"
+		"_collection_link": "https://red-firefly-245852.postman.co/workspace/scb-testing~bf0a9e3a-59e9-48d1-bfab-0952267c341a/collection/1453931-20a8a33b-9db7-4605-8387-ad0e33e8a966?action=share&source=collection_link&creator=1453931"
 	},
 	"item": [
 		{
@@ -48,6 +48,12 @@
 							"    pm.expect(responseBody.id).to.equal(1);",
 							"    pm.expect(responseBody.username).to.equal('emilys');",
 							"    pm.expect(responseBody.email).to.equal('emily.johnson@x.dummyjson.com');",
+							"});",
+							"",
+							"// Test to check if the JWT access token is present in the response body",
+							"pm.test('Login :: Check JWT access token', function () {",
+							"    const responseBody = pm.response.json();",
+							"    pm.expect(responseBody.accessToken).to.match(/^[\\w-]+\\.[\\w-]+\\.[\\w-]+$/);",
 							"});",
 							"",
 							""
