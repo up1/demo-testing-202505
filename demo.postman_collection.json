@@ -1,20 +1,22 @@
 {
 	"info": {
-		"_postman_id": "20a8a33b-9db7-4605-8387-ad0e33e8a966",
+		"_postman_id": "13d46dd7-325c-47fc-bcc3-7e4cb2ee3304",
 		"name": "Demo",
 		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json",
 		"_exporter_id": "1453931",
-		"_collection_link": "https://red-firefly-245852.postman.co/workspace/scb-testing~bf0a9e3a-59e9-48d1-bfab-0952267c341a/collection/1453931-20a8a33b-9db7-4605-8387-ad0e33e8a966?action=share&source=collection_link&creator=1453931"
+		"_collection_link": "https://red-firefly-245852.postman.co/workspace/scb-testing~bf0a9e3a-59e9-48d1-bfab-0952267c341a/collection/1453931-13d46dd7-325c-47fc-bcc3-7e4cb2ee3304?action=share&source=collection_link&creator=1453931"
 	},
 	"item": [
 		{
-			"name": "Login",
+			"name": "Login success",
 			"event": [
 				{
 					"listen": "test",
 					"script": {
 						"exec": [
-							"pm.test(\"Login :: Status code is 200\", function () {",
+							"var request_name = pm.info.requestName;",
+							"",
+							"pm.test(request_name + \" :: Status code is 200\", function () {",
 							"    pm.response.to.have.status(200);",
 							"});",
 							"",
@@ -37,13 +39,13 @@
 							"};",
 							"",
 							"// Perform the JSON schema validation",
-							"pm.test('Login :: Response body matches the schema', function () {",
+							"pm.test(request_name + ' :: Response body matches the schema', function () {",
 							"    const responseBody = pm.response.json();",
 							"    pm.expect(tv4.validate(responseBody, schema)).to.be.true;",
 							"});",
 							"",
 							"// Test to check if id, username, and email match the expected values",
-							"pm.test('Login :: Check id, username, and email', function () {",
+							"pm.test(request_name + ' :: Check id, username, and email', function () {",
 							"    const responseBody = pm.response.json();",
 							"    pm.expect(responseBody.id).to.equal(1);",
 							"    pm.expect(responseBody.username).to.equal('emilys');",
@@ -51,7 +53,7 @@
 							"});",
 							"",
 							"// Test to check if the JWT access token is present in the response body",
-							"pm.test('Login :: Check JWT access token', function () {",
+							"pm.test(request_name + ' :: Check JWT access token', function () {",
 							"    const responseBody = pm.response.json();",
 							"    pm.expect(responseBody.accessToken).to.match(/^[\\w-]+\\.[\\w-]+\\.[\\w-]+$/);",
 							"});",
