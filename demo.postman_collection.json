@@ -1,10 +1,10 @@
 {
 	"info": {
-		"_postman_id": "13d46dd7-325c-47fc-bcc3-7e4cb2ee3304",
+		"_postman_id": "8d7fa677-71cf-4c34-9341-5769037a6bd1",
 		"name": "Demo",
 		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json",
 		"_exporter_id": "1453931",
-		"_collection_link": "https://red-firefly-245852.postman.co/workspace/scb-testing~bf0a9e3a-59e9-48d1-bfab-0952267c341a/collection/1453931-13d46dd7-325c-47fc-bcc3-7e4cb2ee3304?action=share&source=collection_link&creator=1453931"
+		"_collection_link": "https://red-firefly-245852.postman.co/workspace/scb-testing~bf0a9e3a-59e9-48d1-bfab-0952267c341a/collection/1453931-8d7fa677-71cf-4c34-9341-5769037a6bd1?action=share&source=collection_link&creator=1453931"
 	},
 	"item": [
 		{
@@ -56,7 +56,10 @@
 							"pm.test(request_name + ' :: Check JWT access token', function () {",
 							"    const responseBody = pm.response.json();",
 							"    pm.expect(responseBody.accessToken).to.match(/^[\\w-]+\\.[\\w-]+\\.[\\w-]+$/);",
+							"",
+							"    pm.collectionVariables.set(\"DEMO_TOKEN\", responseBody.accessToken);",
 							"});",
+							"",
 							"",
 							""
 						],
@@ -101,7 +104,7 @@
 				"auth": {
 					"type": "bearer",
 					"bearer": {
-						"token": "{{DEMO_LOGIN_TOKEN}}"
+						"token": "{{DEMO_TOKEN}}"
 					}
 				},
 				"method": "GET",
@@ -111,9 +114,31 @@
 			"response": []
 		}
 	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"packages": {},
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"packages": {},
+				"exec": [
+					""
+				]
+			}
+		}
+	],
 	"variable": [
 		{
-			"key": "DEMO_LOGIN_TOKEN",
+			"key": "DEMO_TOKEN",
 			"value": ""
 		}
 	]
